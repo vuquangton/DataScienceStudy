@@ -9,7 +9,12 @@ from scipy.spatial.distance import cdist
 from order_cluster import order_cluster
 from sklearn.cluster import KMeans
 
-df_source = pd.read_excel('Data_Sales_SKU_CUST.xlsx')
+df_source = pd.read_excel('Data\\Data_Sales_SKU_CUST.xlsx')
+df_source['INVOICEDATE']=pd.to_datetime(df_source['INVOICEDATE'])
+print(df_source['INVOICEDATE'].head())
+
+#exit()
+
 tx_user = pd.DataFrame(df_source['CUSTNUM'].unique())
 tx_user.columns = ['CUSTNUM']
 

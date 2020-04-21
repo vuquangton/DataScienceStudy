@@ -1,2 +1,0 @@
-# DataScienceStudy
-DataScienceStudy

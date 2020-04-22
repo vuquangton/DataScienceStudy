@@ -33,14 +33,15 @@ import xgboost as xgb
 from sklearn.model_selection import KFold, cross_val_score, train_test_split
 
 os.system('cls')
-df = pd.read_excel('Data_KHTT_profile.xlsx',converters={'NgayCapNhatCuoi':pd.to_datetime}, index_col=0) 
+df = pd.read_excel('Data\Data_Sales_SKU_CUST.xlsx') 
 
-tx_user = pd.DataFrame(df['MaThe7'].unique())
-tx_user.columns = ['MaThe7']
+tx_user = pd.DataFrame(df['CUSTNUM'].unique())
+tx_user.columns = ['CUSTNUM']
 
-tx_frequency = df.groupby('MaThe7').DoanhSo.count().reset_index()
-tx_frequency.columns=['MaThe7','Frequency']
-tx_user = pd.merge(tx_user, tx_frequency, on='MaThe7')
+tx_frequency = df.groupby('CUSTNUM').INVOICEDATE.count().reset_index()
+tx_frequency.columns=['CUSTNUM','Frequency']
+tx_user = pd.merge(tx_user, tx_frequency, on='CUSTNUM')
+tx_user.to_csv("Result\\frequency.csv")
 #plot the histogram
 plot_data = [
     go.Histogram(

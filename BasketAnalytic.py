@@ -3,8 +3,12 @@ import pandas as pd
 from mlxtend.frequent_patterns import apriori
 from mlxtend.frequent_patterns import association_rules
 
+try:
+    df = pd.read_excel('Data\Data_Sales_SKU_CUST.xlsx')
+except Exception as ex:
+    print(ex)
+    exit(1)
 
-df = pd.read_excel('Data_Sales_SKU_CUST.xlsx')
 df['ID'] = df['ID'].astype('str')
 
 

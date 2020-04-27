@@ -9,14 +9,6 @@ df_saleByDay = df_source.groupby('INVOICEDATE')['VALUE'].sum().reset_index()
 df_saleByDay['INVOICEDATE'] = pd.to_datetime(df_saleByDay['INVOICEDATE'])
 df_saleByDay['INVOICEDATE']=df_saleByDay['INVOICEDATE'].map(dt.datetime.toordinal)
 
-# print(df_saleByDay.describe())
-
-
-# df_saleByDay.plot(x='INVOICEDATE', y='VALUE', style='-')  
-# pyplot.title('INVOICE DATE vs VALUE')  
-# pyplot.xlabel('INVOICE DATE')  
-# pyplot.ylabel('VALUE')  
-# pyplot.show()
 
 
 y = np.asarray(df_saleByDay['VALUE'])

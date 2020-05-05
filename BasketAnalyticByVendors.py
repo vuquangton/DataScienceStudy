@@ -1,5 +1,6 @@
 import pandas as pd
 
+from networkHelpder import draw_graph
 from mlxtend.frequent_patterns import apriori
 from mlxtend.frequent_patterns import association_rules
 
@@ -26,3 +27,4 @@ market_basket.fillna(0, inplace = True)
 itemsets = apriori(market_basket, min_support=0.03, use_colnames=True)
 rules = association_rules(itemsets, metric="lift", min_threshold=0.7)
 print(rules)
+draw_graph(rules, 4)
